@@ -9,7 +9,7 @@ import Foundation
 
 public struct CharacterDataRequest: Codable {
     
-    private(set) var characterId: Int?
+    private(set) public var characterId: Int?
     
     public init(characterId: Int? = nil) {
         self.characterId = characterId
