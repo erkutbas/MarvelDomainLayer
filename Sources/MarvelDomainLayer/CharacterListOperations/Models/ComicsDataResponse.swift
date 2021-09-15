@@ -113,7 +113,6 @@ public enum Role: String, Codable {
     case penciler = "penciler"
     case penciller = "penciller"
     case pencillerCover = "penciller (cover)"
-    case writer = "writer"
     case unknown = "unknown"
 }
 
