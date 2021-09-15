@@ -9,18 +9,9 @@ import Foundation
 
 // MARK: - CharacterDataResponse
 public struct CharacterDataResponse: Codable {
-    public let code: Int
-    public let status, copyright, attributionText, attributionHTML: String
-    public let etag: String
     public let data: CharacterListData
     
-    public init(code: Int, status: String, copyright: String, attributionText: String, attributionHTML: String, etag: String, data: CharacterListData) {
-        self.code = code
-        self.status = status
-        self.copyright = copyright
-        self.attributionText = attributionText
-        self.attributionHTML = attributionHTML
-        self.etag = etag
+    public init(data: CharacterListData) {
         self.data = data
     }
     
@@ -43,33 +34,18 @@ public struct CharacterListData: Codable {
 // MARK: - Result
 public struct CharacterData: Codable {
     public let id: Int
-    public let name, resultDescription: String
-    public let modified: Date
+    public let name: String
     public let thumbnail: Thumbnail
-    public let resourceURI: String
-    public let comics, series: Comics
-    public let stories: Stories
-    public let events: Comics
-    public let urls: [URLElement]
     
     enum CodingKeys: String, CodingKey {
         case id, name
-        case resultDescription = "description"
-        case modified, thumbnail, resourceURI, comics, series, stories, events, urls
+        case thumbnail
     }
     
-    public init(id: Int, name: String, resultDescription: String, modified: Date, thumbnail: Thumbnail, resourceURI: String, comics: Comics, series: Comics, stories: Stories, events: Comics, urls: [URLElement]) {
+    public init(id: Int, name: String, thumbnail: Thumbnail) {
         self.id = id
         self.name = name
-        self.resultDescription = resultDescription
-        self.modified = modified
         self.thumbnail = thumbnail
-        self.resourceURI = resourceURI
-        self.comics = comics
-        self.series = series
-        self.stories = stories
-        self.events = events
-        self.urls = urls
     }
 }
 
