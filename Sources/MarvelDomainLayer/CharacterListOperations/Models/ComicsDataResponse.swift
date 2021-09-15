@@ -9,18 +9,9 @@ import Foundation
 
 // MARK: - ComicsDataResponse
 public struct ComicsDataResponse: Codable {
-    public let code: Int
-    public let status, copyright, attributionText, attributionHTML: String
-    public let etag: String
     public let data: ComicListData
 
-    public init(code: Int, status: String, copyright: String, attributionText: String, attributionHTML: String, etag: String, data: ComicListData) {
-        self.code = code
-        self.status = status
-        self.copyright = copyright
-        self.attributionText = attributionText
-        self.attributionHTML = attributionHTML
-        self.etag = etag
+    public init(data: ComicListData) {
         self.data = data
     }
 }
@@ -41,65 +32,22 @@ public struct ComicListData: Codable {
 
 // MARK: - Result
 public struct ComicData: Codable {
-    public let id, digitalID: Int
+    public let id: Int
     public let title: String
-    public let issueNumber: Int
-    public let variantDescription: VariantDescription
-    public let resultDescription: String?
-    public let modified, isbn, upc, diamondCode: String
-    public let ean, issn: String
-    public let format: Format
-    public let pageCount: Int
-    public let textObjects: [TextObject]
-    public let resourceURI: String
-    public let urls: [URLElement]
-    public let series: Series
-    public let variants: [Series]
-    public let dates: [DateElement]
-    public let prices: [Price]
     public let thumbnail: Thumbnail
     public let images: [Thumbnail]
-    public let creators: Creators
-    public let characters: Characters
-    public let stories: Stories
-    public let events: Characters
 
     enum CodingKeys: String, CodingKey {
         case id
-        case digitalID = "digitalId"
-        case title, issueNumber, variantDescription
-        case resultDescription = "description"
-        case modified, isbn, upc, diamondCode, ean, issn, format, pageCount, textObjects, resourceURI, urls, series, variants, dates, prices, thumbnail, images, creators, characters, stories, events
+        case title
+        case thumbnail, images
     }
 
-    public init(id: Int, digitalID: Int, title: String, issueNumber: Int, variantDescription: VariantDescription, resultDescription: String?, modified: String, isbn: String, upc: String, diamondCode: String, ean: String, issn: String, format: Format, pageCount: Int, textObjects: [TextObject], resourceURI: String, urls: [URLElement], series: Series, variants: [Series], dates: [DateElement], prices: [Price], thumbnail: Thumbnail, images: [Thumbnail], creators: Creators, characters: Characters, stories: Stories, events: Characters) {
+    public init(id: Int, title: String, thumbnail: Thumbnail, images: [Thumbnail]) {
         self.id = id
-        self.digitalID = digitalID
         self.title = title
-        self.issueNumber = issueNumber
-        self.variantDescription = variantDescription
-        self.resultDescription = resultDescription
-        self.modified = modified
-        self.isbn = isbn
-        self.upc = upc
-        self.diamondCode = diamondCode
-        self.ean = ean
-        self.issn = issn
-        self.format = format
-        self.pageCount = pageCount
-        self.textObjects = textObjects
-        self.resourceURI = resourceURI
-        self.urls = urls
-        self.series = series
-        self.variants = variants
-        self.dates = dates
-        self.prices = prices
         self.thumbnail = thumbnail
         self.images = images
-        self.creators = creators
-        self.characters = characters
-        self.stories = stories
-        self.events = events
     }
 }
 
