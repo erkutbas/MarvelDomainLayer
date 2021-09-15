@@ -9,10 +9,10 @@ import Foundation
 
 // MARK: - CharacterDataResponse
 public struct CharacterDataResponse: Codable {
-    let code: Int
-    let status, copyright, attributionText, attributionHTML: String
-    let etag: String
-    let data: CharacterListData
+    public let code: Int
+    public let status, copyright, attributionText, attributionHTML: String
+    public let etag: String
+    public let data: CharacterListData
     
     public init(code: Int, status: String, copyright: String, attributionText: String, attributionHTML: String, etag: String, data: CharacterListData) {
         self.code = code
@@ -28,8 +28,8 @@ public struct CharacterDataResponse: Codable {
 
 // MARK: - DataClass
 public struct CharacterListData: Codable {
-    let offset, limit, total, count: Int
-    let results: [CharacterData]
+    public let offset, limit, total, count: Int
+    public let results: [CharacterData]
     
     public init(offset: Int, limit: Int, total: Int, count: Int, results: [CharacterData]) {
         self.offset = offset
@@ -42,15 +42,15 @@ public struct CharacterListData: Codable {
 
 // MARK: - Result
 public struct CharacterData: Codable {
-    let id: Int
-    let name, resultDescription: String
-    let modified: Date
-    let thumbnail: Thumbnail
-    let resourceURI: String
-    let comics, series: Comics
-    let stories: Stories
-    let events: Comics
-    let urls: [URLElement]
+    public let id: Int
+    public let name, resultDescription: String
+    public let modified: Date
+    public let thumbnail: Thumbnail
+    public let resourceURI: String
+    public let comics, series: Comics
+    public let stories: Stories
+    public let events: Comics
+    public let urls: [URLElement]
     
     enum CodingKeys: String, CodingKey {
         case id, name
@@ -75,10 +75,10 @@ public struct CharacterData: Codable {
 
 // MARK: - Comics
 public struct Comics: Codable {
-    let available: Int
-    let collectionURI: String
-    let items: [ComicsItem]
-    let returned: Int
+    public let available: Int
+    public let collectionURI: String
+    public let items: [ComicsItem]
+    public let returned: Int
     
     public init(available: Int, collectionURI: String, items: [ComicsItem], returned: Int) {
         self.available = available
@@ -91,8 +91,8 @@ public struct Comics: Codable {
 
 // MARK: - ComicsItem
 public struct ComicsItem: Codable {
-    let resourceURI: String
-    let name: String
+    public let resourceURI: String
+    public let name: String
     
     public init(resourceURI: String, name: String) {
         self.resourceURI = resourceURI
@@ -116,8 +116,8 @@ extension ItemType {
 
 // MARK: - Thumbnail
 public struct Thumbnail: Codable {
-    let path: String
-    let thumbnailExtension: Extension
+    public let path: String
+    public let thumbnailExtension: Extension
     
     enum CodingKeys: String, CodingKey {
         case path
