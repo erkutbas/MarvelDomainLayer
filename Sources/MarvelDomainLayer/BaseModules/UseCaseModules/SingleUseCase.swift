@@ -11,7 +11,7 @@ import NetworkEntityLayer
 
 public class SingleUseCase<Request, Response, Repository>: BaseUseCase<Request, Single<Response>, Repository> {
     
-    func execute(useCaseCallBack: UseCaseCallBack<Response>, params: Request) {
+    public func execute(useCaseCallBack: UseCaseCallBack<Response>, params: Request) {
         addDisposable(disposable: self.generateUseCase(parameter: params)?.subscribe(onSuccess: { (response) in
             useCaseCallBack.onSuccess(response: response)
         }, onFailure: { [weak self](error) in
