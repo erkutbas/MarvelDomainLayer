@@ -36,16 +36,19 @@ public struct CharacterData: Codable {
     public let id: Int
     public let name: String
     public let thumbnail: Thumbnail
+    public let description: String?
     
     enum CodingKeys: String, CodingKey {
         case id, name
         case thumbnail
+        case description
     }
     
-    public init(id: Int, name: String, thumbnail: Thumbnail) {
+    public init(id: Int, name: String, thumbnail: Thumbnail, description: String?) {
         self.id = id
         self.name = name
         self.thumbnail = thumbnail
+        self.description = description
     }
 }
 
